@@ -5,7 +5,7 @@ function getAllarea(req,res)
 {
     db.query(`select ct.cityname, a.areaname, a.pincode, a.areaid from 
         city as ct inner join area as a on 
-        ct.cityid = a.cityid
+        ct.cityid = a.cityid where a.isActive = 1
         `,(err,result)=>
     {
         if(err)
@@ -60,7 +60,7 @@ function updateArea(req,res)
 function removeArea(req,res)
 {
     const {id}=req.params
-    db.query("Delete from area where areaid=?",[id],(err,result)=>
+    db.query("update area set isActive=0 where areaid=?",[id],(err,result)=>
     {
         if(err)
             return res.status(500).json(err)

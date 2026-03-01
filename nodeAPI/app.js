@@ -8,6 +8,16 @@ const cnRoutes = require("./routes/country.routes")
 const stRoutes = require("./routes/state.routes")
 const cityRoutes=require("./routes/city.routes")
 const areaRoutes=require("./routes/area.routes")
+const paymentMethodRoutes=require("./routes/paymentmethod.routes")
+const breed=require("./routes/breed.routes")
+const donationRoutes = require("./routes/donation.routes")
+const ngoRoutes = require("./routes/ngosinfo.routes")
+const vetRoutes = require("./routes/vetinfo.routes")
+const volunteerRoutes = require("./routes/volunteer.routes")
+const animalInfoRoutes = require("./routes/animalinfo.routes")
+
+const adminRoutes = require("./routes/mstadmin.routes")
+const userRoutes = require("./routes/mstuser.routes")
 
 //main code
 
@@ -18,6 +28,16 @@ app.use('/api/country', cnRoutes)
 app.use('/api/state', stRoutes)
 app.use('/api/city',cityRoutes)
 app.use('/api/area',areaRoutes)
+app.use('/api/paymentmethod',paymentMethodRoutes)
+app.use('/api/breed',breed)
+app.use('/api/donation', donationRoutes)
+app.use('/api/ngo', ngoRoutes)
+app.use('/api/vet', vetRoutes)
+app.use('/api/volunteer', volunteerRoutes)
+app.use('/api/animalinfo', animalInfoRoutes)
+
+app.use('/api/admin', adminRoutes)
+app.use('/api/user', userRoutes)
 
 
 

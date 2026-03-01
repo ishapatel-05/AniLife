@@ -2,7 +2,7 @@ const db=require("../config/db")
 
 function getAllcn(req,res)
 {
-    db.query("Select * from country",(err,result)=>
+    db.query("Select * from country where isActive=1",(err,result)=>
     {
         if(err)
             return res.status(500).json(err)
@@ -49,7 +49,7 @@ function updateCn(req,res)
 function removeCn(req,res)
 {
     const {id}=req.params
-    db.query("Delete from country where countryid=?",[id],(err)=>
+    db.query("update country set isActive=0 where countryid=?",[id],(err)=>
     {
         if(err)
             return res.status(500).json(err)

@@ -4,7 +4,7 @@ function getAllcity(req,res)
 {
     db.query(`select s.statename, ct.cityname, ct.cityid from 
         state as s inner join city as ct on 
-        s.stateid = ct.stateid
+        s.stateid = ct.stateid where ct.isActive = 1
         `,(err,result)=>
     {
         if(err)
@@ -55,7 +55,7 @@ function updateCity(req,res)
 function removeCity(req,res)
 {
     const {id}=req.params
-    db.query("Delete from city where cityid=?",[id],(err,result)=>
+    db.query("update city set isActive=0 where cityid=?",[id],(err,result)=>
     {
         if(err)
             return res.status(500).json(err)

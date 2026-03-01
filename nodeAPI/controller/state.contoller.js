@@ -4,7 +4,7 @@ function getAllstate(req,res)
 {
     db.query(`select c.countryname,s.statename,s.stateid from 
         country as c inner join state as s on 
-        c.countryid = s.countryid
+        c.countryid = s.countryid where s.isActive = 1
         `,(err,result)=>
     {
         if(err)
@@ -55,7 +55,7 @@ function upstate(req,res)
 function removestate(req,res)
 {
     const {id}=req.params
-    db.query("Delete from state where stateid=?",[id],(err,result)=>
+    db.query("update state set isActive=0 where stateid=?",[id],(err,result)=>
     {
         if(err)
             return res.status(500).json(err)
