@@ -1,53 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+
+// import { BrowserRouter, Routes, Route } from 'react-router-dom'
+// import AdminLogin from './admin/AdminLogin'
+// import Dashboard from './admin/Dashboard'
+
+// import Home from './pages/home'
+
+// function App() {
+//   return (
+//     <BrowserRouter>
+
+//       <Routes>
+//         <Route path="/" element={<AdminLogin />} />
+//         <Route path="/login" element={<AdminLogin />} />
+//         <Route path="/dashboard" element={<Dashboard />} />
+//         <Route path="/home" element={<Home />} />
+//       </Routes>
+//     </BrowserRouter>
+//   )
+// }
+
+// export default App
+
+
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import AdminLogin from './admin/AdminLogin'
+import Dashboard from './admin/Dashboard'
+import Home from './pages/home'
+import Category from './admin/category'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  // i made it
-    const isha=()=>{
-      alert("Welcome")
-    }
-
-    const divya=()=>{
-      alert("Submitted!")
-    }
-    // end 
   return (
-    
+    <BrowserRouter>
+      <Routes>
+        {/* Admin */}
+        <Route path="/adminlogin" element={<AdminLogin />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/admin/category" element={<Category />} />
 
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-
-      {/* i made it */}
-      <div>
-        <h1>First react project</h1>
-        <button onClick={isha}>click</button>
-        <button onClick={divya}>submit</button>
-      </div>
-      {/* end */}
-    </>
+        {/* User pages */}
+        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/adopt" element={<Home />} />
+        <Route path="/rescue" element={<Home />} />
+        <Route path="/ngo" element={<Home />} />
+        <Route path="/vet" element={<Home />} />
+        <Route path="/volunteer" element={<Home />} />
+        <Route path="/guide" element={<Home />} />
+        <Route path="/about" element={<Home />} />
+        <Route path="/contact" element={<Home />} />
+        <Route path="/emergency" element={<Home />} />
+        <Route path="/login" element={<Home />} />
+        <Route path="/register" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
