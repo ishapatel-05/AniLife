@@ -18,6 +18,17 @@ const animalInfoRoutes = require("./routes/animalinfo.routes")
 
 const adminRoutes = require("./routes/mstadmin.routes")
 const userRoutes = require("./routes/mstuser.routes")
+//for pic
+const userProfileRoutes = require("./routes/userprofile.routes")
+//animal category
+const categoryRoutes = require("./routes/animalcategory.routes")
+
+const petRoutes = require("./routes/petlisting.routes")
+const adoptionRoutes = require("./routes/adoptionrequest.routes")
+const rescueRoutes = require("./routes/rescuecase.routes")
+
+
+
 
 //main code
 
@@ -38,6 +49,17 @@ app.use('/api/animalinfo', animalInfoRoutes)
 
 app.use('/api/admin', adminRoutes)
 app.use('/api/user', userRoutes)
+//for pic
+app.use('/uploads', express.static('uploads')) // ← serve images
+app.use('/api/userprofile', userProfileRoutes)
+
+//animal category
+app.use('/api/category', categoryRoutes)
+
+app.use('/api/petlisting', petRoutes)
+
+app.use('/api/adoption', adoptionRoutes)
+app.use('/api/rescue', rescueRoutes)
 
 
 
