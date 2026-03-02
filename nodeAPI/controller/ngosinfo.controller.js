@@ -1,11 +1,25 @@
 const db = require("../config/db")
 
 // GET all active NGOs
+// function getAllNgos(req, res) {
+//     db.query(`SELECT n.ngoid, n.ngoname, n.contact, n.email, 
+//               n.address, n.areaid, n.services, 
+//               n.createdby, n.createdon, n.isActive 
+//               FROM ngosinfo as n 
+//               WHERE n.isActive = 1`, (err, result) => {
+//         if (err) return res.status(500).json(err)
+//         return res.json(result)
+//     })
+// }
+
+
+
 function getAllNgos(req, res) {
     db.query(`SELECT n.ngoid, n.ngoname, n.contact, n.email, 
-              n.address, n.areaid, n.services, 
-              n.createdby, n.createdon, n.isActive 
+              n.address, n.areaid, a.areaname, n.services, 
+              n.isActive 
               FROM ngosinfo as n 
+              INNER JOIN area as a ON n.areaid = a.areaid
               WHERE n.isActive = 1`, (err, result) => {
         if (err) return res.status(500).json(err)
         return res.json(result)

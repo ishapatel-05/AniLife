@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 
-const API = "http://localhost:5000/api/animalcategory"
+
+const API = "http://localhost:5000/api/category"
+
 
 export default function Category() {
     const [catname, setCatname] = useState("")
