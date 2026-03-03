@@ -71,7 +71,7 @@ export default function City() {
     return (
         <div className="container mt-4">
             <h2 className="text-center mb-4" style={{ color: '#C2185B' }}>
-                🏙️ City Management
+                 City Management
             </h2>
 
             {/* Form */}

@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 export default function Footer() {
     return (
         <footer style={{
-            backgroundColor: '#B03451',
+            // backgroundColor: '#B03451',
+            // backgroundColor: '#B0334F',
+            background: "linear-gradient(135deg, #E91E8C, #C2185B)",    
             color: 'white',
             padding: '40px 20px 20px 20px',
             marginTop: '40px'

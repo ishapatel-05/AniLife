@@ -66,7 +66,7 @@ export default function Area() {
     return (
         <div className="container mt-4">
             <h2 className="text-center mb-4" style={{ color: '#C2185B' }}>
-                📍 Area Management
+                Area Management
             </h2>
 
             {/* Form */}

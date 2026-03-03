@@ -22,37 +22,24 @@ const navItems = [
   { name: "Logout", path: "/" },
 ]
 
-// const cardData = [
-//   { title: "Category", desc: "Manage animal categories" },
-//   { title: "Breed", desc: "Manage animal breeds" },
-//   { title: "Petlisting", desc: "Manage pet listings" },
-//   { title: "NGO", desc: "Manage NGO information" },
-//   { title: "Vet", desc: "Manage vet information" },
-//   { title: "Volunteer", desc: "Manage volunteers" },
-//   { title: "Users", desc: "Manage registered users" },
-//   { title: "Donations", desc: "View all donations" },
-//   { title: "Rescue Cases", desc: "Manage rescue cases" },
-//   { title: "Adoption", desc: "Manage adoption requests" },
-//     { title: "Category", desc: "Manage animal categories", path: "/admin/category" },
-
 // ]
 const cardData = [
-  { title: "Category", desc: "Manage animal categories", icon: "🐾", path: "/admin/category" },
-  { title: "Breed", desc: "Manage animal breeds", icon: "🐕", path: "/admin/breed" },
-  { title: "Petlisting", desc: "Manage pet listings", icon: "📋", path: "/admin/petlisting" },
-  { title: "NGO", desc: "Manage NGO information", icon: "🏢", path: "/admin/ngo" },
-  { title: "Vet", desc: "Manage vet information", icon: "🩺", path: "/admin/vet" },
-  { title: "Volunteer", desc: "Manage volunteers", icon: "🙋", path: "/admin/volunteer" },
-  { title: "Users", desc: "Manage registered users", icon: "👥", path: "/admin/users" },
-  { title: "Animal Guide", desc: "View all animal info", icon: "💝", path: "/admin/animalinfo" },
-  { title: "Rescue Cases", desc: "Manage rescue cases", icon: "🚨", path: "/admin/rescue" },
-  { title: "Adoption", desc: "Manage adoption requests", icon: "🏡", path: "/admin/adoption" },
-  { title: "Country", desc: "Manage countries", icon: "🌍", path: "/admin/country" },
-  { title: "State", desc: "Manage states", icon: "🗺️", path: "/admin/state" },
-  { title: "City", desc: "Manage cities", icon: "🏙️", path: "/admin/city" },
-  { title: "Area", desc: "Manage areas", icon: "📍", path: "/admin/area" },
-  { title: "Payment Method", desc: "Manage payment methods", icon: "💳", path: "/admin/payment" },
-  { title: "Donation ", desc: "Manage Donation ", icon: "💳", path: "/admin/donation" },
+  { title: "Category", desc: "Manage animal categories",  path: "/admin/category" },
+  { title: "Breed", desc: "Manage animal breeds",  path: "/admin/breed" },
+  { title: "Petlisting", desc: "Manage pet listings",  path: "/admin/petlisting" },
+  { title: "NGO", desc: "Manage NGO information",  path: "/admin/ngo" },
+  { title: "Vet", desc: "Manage vet information",  path: "/admin/vet" },
+  { title: "Volunteer", desc: "Manage volunteers",  path: "/admin/volunteer" },
+  { title: "Users", desc: "Manage registered users",  path: "/admin/users" },
+  { title: "Animal Guide", desc: "View all animal info",  path: "/admin/animalinfo" },
+  { title: "Rescue Cases", desc: "Manage rescue cases",  path: "/admin/rescue" },
+  { title: "Adoption", desc: "Manage adoption requests",  path: "/admin/adoption" },
+  { title: "Country", desc: "Manage countries",  path: "/admin/country" },
+  { title: "State", desc: "Manage states",  path: "/admin/state" },
+  { title: "City", desc: "Manage cities",  path: "/admin/city" },
+  { title: "Area", desc: "Manage areas",  path: "/admin/area" },
+  { title: "Payment Method", desc: "Manage payment methods",  path: "/admin/payment" },
+  { title: "Donation ", desc: "Manage Donation ",  path: "/admin/donation" },
 ]
 
 export default function Dashboard() {
@@ -229,85 +216,5 @@ export default function Dashboard() {
 }
 
 
-
-// import { useNavigate } from "react-router-dom"
-
-// const navItems = [
-//   "Dashboard", "Category", "Breed", "Petlisting",
-//   "NGO", "Vet", "Volunteer", "Users",
-//   "Donations", "Rescue Cases", "Adoption", "Logout"
-// ]
-
-// const cardData = [
-//   { title: "Category", desc: "Manage animal categories" },
-//   { title: "Breed", desc: "Manage animal breeds" },
-//   { title: "Petlisting", desc: "Manage pet listings" },
-//   { title: "NGO", desc: "Manage NGO information" },
-//   { title: "Vet", desc: "Manage vet information" },
-//   { title: "Volunteer", desc: "Manage volunteers" },
-//   { title: "Users", desc: "Manage users" },
-//   { title: "Donations", desc: "View all donations" },
-//   { title: "Rescue Cases", desc: "Manage rescue cases" },
-//   { title: "Adoption", desc: "Manage adoption requests" },
-// ]
-
-// export default function Dashboard() {
-//   const navigate = useNavigate()
-
-//   const handleLogout = () => {
-//     navigate("/")
-//   }
-
-//   return (
-//     <div style={{ display: "flex", height: "100vh" }}>
-
-//       {/* Sidebar */}
-//       <div style={{
-//         width: "220px", background: "#2c7a4b",
-//         color: "#fff", padding: "20px", overflowY: "auto"
-//       }}>
-//         <h4 className="text-center mb-4"> AniLife Connect</h4>
-//         <ul style={{ listStyle: "none", padding: 0 }}>
-//           {navItems.map((item) => (
-//             <li key={item}
-//               style={{
-//                 padding: "10px", borderRadius: "6px",
-//                 cursor: "pointer", marginBottom: "5px"
-//               }}
-//               onClick={() => item === "Logout" ? handleLogout() : null}
-//               onMouseEnter={e => e.target.style.background = "#1a5c38"}
-//               onMouseLeave={e => e.target.style.background = "transparent"}
-//             >
-//               {item}
-//             </li>
-//           ))}
-//         </ul>
-//       </div>
-
-//       {/* Main Content */}
-//       <div style={{ flex: 1, padding: "25px", background: "#f0f0f0", overflowY: "auto" }}>
-//         <div className="alert alert-success">
-//           Welcome, Admin! 
-//         </div>
-//         <div className="row">
-//           {cardData.map((card, index) => (
-//             <div key={index} className="col-md-4 mb-4">
-//               <div className="card shadow">
-//                 <div className="card-body">
-//                   <h5 className="card-title">{card.title}</h5>
-//                   <p className="card-text text-muted">{card.desc}</p>
-//                   <button className="btn btn-success btn-sm">
-//                     Open
-//                   </button>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-
-//     </div>
-//   )
-// }
 
 

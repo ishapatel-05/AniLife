@@ -100,7 +100,7 @@ export default function Vet() {
         <div className="container mt-4">
 
             <h2 className="text-center mb-4" style={{ color: '#C2185B' }}>
-                🐶 Vet Management
+                Vet Management
             </h2>
 
             {/* FORM */}

@@ -17,7 +17,7 @@ export default function Donation() {
 
     return (
         <div className="container mt-4">
-            <h2 className="text-center mb-4" style={{ color: '#C2185B' }}>💰 Donation Management</h2>
+            <h2 className="text-center mb-4" style={{ color: '#C2185B' }}> Donation Management</h2>
 
             {/* Total Summary */}
             <div className="card p-3 mb-4 shadow text-center">

@@ -1,16 +1,26 @@
 const db = require("../config/db")
 
+
 // GET all active vets
 function getAllVets(req, res) {
-    db.query(`SELECT v.vetid, v.vetname, v.contact, v.email, 
-              v.address, v.areaid, v.specialization, 
-              v.yearsofexperience, v.availability, v.isActive 
-              FROM vetinfo as v 
+    db.query(`SELECT v.*, a.areaname 
+              FROM vetinfo v
+              LEFT JOIN area a ON v.areaid = a.areaid
               WHERE v.isActive = 1`, (err, result) => {
         if (err) return res.status(500).json(err)
         return res.json(result)
     })
 }
+// function getAllVets(req, res) {
+//     db.query(`SELECT v.vetid, v.vetname, v.contact, v.email, 
+//               v.address, v.areaid, v.specialization, 
+//               v.yearsofexperience, v.availability, v.isActive 
+//               FROM vetinfo as v 
+//               WHERE v.isActive = 1`, (err, result) => {
+//         if (err) return res.status(500).json(err)
+//         return res.json(result)
+//     })
+// }
 
 // GET vet by ID
 function getVetById(req, res) {

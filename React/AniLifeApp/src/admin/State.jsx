@@ -68,7 +68,7 @@ export default function State() {
     return (
         <div className="container mt-4">
             <h2 className="text-center mb-4" style={{ color: '#C2185B' }}>
-                🗺️ State Management
+                State Management
             </h2>
 
             {/* Form */}

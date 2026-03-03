@@ -6,7 +6,12 @@ export default function Navbar() {
 
     return (
         <nav style={{
-            backgroundColor: '#E45473',
+            // background: '#C2185B',
+            // background: "linear-gradient(135deg, #E91E8C, #C2185B)",
+            // fontFamily:'Segoe UI'
+
+
+            background: "linear-gradient(180deg, #E91E8C 0%, #C2185B 100%)",
             padding: '10px 25px',
             display: 'flex',
             alignItems: 'center',
@@ -14,7 +19,7 @@ export default function Navbar() {
             position: 'sticky',
             top: 0,
             zIndex: 1000,
-            boxShadow: '0 2px 10px rgba(233,30,140,0.3)'
+            boxShadow: '0 2px 10px rgba(233,30,140,0.3)',
         }}>
 
             {/* Logo */}

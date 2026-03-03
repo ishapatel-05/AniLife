@@ -42,7 +42,7 @@ export default function PaymentMethod() {
 
     return (
         <div className="container mt-4">
-            <h2 className="text-center mb-4" style={{ color: '#C2185B' }}>💳 Payment Method Management</h2>
+            <h2 className="text-center mb-4" style={{ color: '#C2185B' }}> Payment Method Management</h2>
             <div className="card p-3 mb-4 shadow">
                 <div className="row">
                     <div className="col-md-6">

@@ -35,7 +35,7 @@ export default function Adoption() {
 
     return (
         <div className="container mt-4">
-            <h2 className="text-center mb-4" style={{ color: '#C2185B' }}>🏡 Adoption Requests</h2>
+            <h2 className="text-center mb-4" style={{ color: '#C2185B' }}>Adoption Requests</h2>
 
             {/* Filter Buttons */}
             <div className="mb-3 d-flex gap-2">
