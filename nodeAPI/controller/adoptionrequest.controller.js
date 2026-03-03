@@ -2,12 +2,24 @@ const db = require("../config/db")
 
 // GET all active requests
 function getAllRequests(req, res) {
-    db.query(`SELECT * FROM adoptionrequest WHERE isActive=1`,
-        (err, result) => {
-            if (err) return res.status(500).json(err)
-            return res.json(result)
-        })
+    db.query(`SELECT a.*, 
+              p.name as petname, p.petPic,
+              CONCAT(u.fname,' ',u.lname) as adoptername
+              FROM adoptionrequest a
+              LEFT JOIN petlisting p ON a.petId = p.petId
+              LEFT JOIN mstuser u ON a.adopterId = u.uid
+              WHERE a.isActive=1`, (err, result) => {
+        if (err) return res.status(500).json(err)
+        return res.json(result)
+    })
 }
+// function getAllRequests(req, res) {
+//     db.query(`SELECT * FROM adoptionrequest WHERE isActive=1`,
+//         (err, result) => {
+//             if (err) return res.status(500).json(err)
+//             return res.json(result)
+//         })
+// }
 
 // GET request by ID
 function getRequestById(req, res) {
@@ -22,6 +34,7 @@ function getRequestById(req, res) {
 }
 
 // GET requests by status
+
 function getRequestByStatus(req, res) {
     const { status } = req.params
     db.query(`SELECT * FROM adoptionrequest WHERE status=? AND isActive=1`,

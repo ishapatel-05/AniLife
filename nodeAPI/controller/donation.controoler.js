@@ -1,15 +1,30 @@
 const db = require("../config/db")
 
 // GET all donations
+
 function getAllDonations(req, res) {
-    db.query(`SELECT d.donationid, d.uid, d.ngoid, d.amount, 
-              d.pmid, d.transactionid, d.donationdate, 
-              d.createdby, d.createdon 
-              FROM donation as d`, (err, result) => {
+    db.query(`SELECT d.*, 
+              CONCAT(u.fname,' ',u.lname) as username,
+              n.ngoname,
+              p.paymentmethodname
+              FROM donation d
+              LEFT JOIN mstuser u ON d.uid = u.uid
+              LEFT JOIN ngosinfo n ON d.ngoid = n.ngoid
+              LEFT JOIN paymentmethod p ON d.pmid = p.pmid`, 
+              (err, result) => {
         if (err) return res.status(500).json(err)
         return res.json(result)
     })
 }
+// function getAllDonations(req, res) {
+//     db.query(`SELECT d.donationid, d.uid, d.ngoid, d.amount, 
+//               d.pmid, d.transactionid, d.donationdate, 
+//               d.createdby, d.createdon 
+//               FROM donation as d`, (err, result) => {
+//         if (err) return res.status(500).json(err)
+//         return res.json(result)
+//     })
+// }
 
 // GET donation by ID
 function getDonationById(req, res) {

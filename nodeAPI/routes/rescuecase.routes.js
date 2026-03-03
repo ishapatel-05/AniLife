@@ -14,7 +14,21 @@ router.put('/image/:id', upload.single('rescuePic'), rescueController.updateResc
 
 module.exports = router
 
-// Method: PUT
+
+
+// GET http://localhost:5000/api/rescuecase → fetches all active rescue cases
+
+// GET http://localhost:5000/api/rescuecase/:id → fetch a specific case
+
+// POST http://localhost:5000/api/rescuecase → add a new rescue case
+
+// PUT http://localhost:5000/api/rescuecase/:id → update status or info
+
+// DELETE http://localhost:5000/api/rescuecase/:id → soft delete
+
+// So now, if you hit GET http://localhost:5000/api/rescuecase in Postman or your React app, you should get the JSON array of all active rescue cases — exactly what you wanted.
+
+// // Method: PUT
 // URL: http://localhost:5000/api/rescue/image/1
 // Body: form-data → rescuePic → File → select image
 // ```

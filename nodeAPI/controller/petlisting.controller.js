@@ -2,17 +2,28 @@ const db = require("../config/db")
 
 // GET all active pets
 function getAllPets(req, res) {
-    db.query(`SELECT p.petId, p.listedByType, p.listedById, 
-              p.catId, p.breedId, p.name, p.age, p.gender, 
-              p.healthDetails, p.vaccinated, p.areaid, p.petPic,
-              p.adoptionFee, p.contactNumber, p.approvedBy, 
-              p.approvedOn, p.createdOn 
-              FROM petlisting as p 
-              WHERE p.isActive=1`, (err, result) => {
+    db.query(`SELECT p.*, c.catname, b.breedname, a.areaname
+          FROM petlisting p
+          INNER JOIN animalcategory c ON p.catId = c.catid
+          INNER JOIN breed b ON p.breedId = b.breedid
+          INNER JOIN area a ON p.areaid = a.areaid
+          WHERE p.isActive = 1`, (err, result) => {
         if (err) return res.status(500).json(err)
         return res.json(result)
     })
 }
+// function getAllPets(req, res) {
+//     db.query(`SELECT p.petId, p.listedByType, p.listedById, 
+//               p.catId, p.breedId, p.name, p.age, p.gender, 
+//               p.healthDetails, p.vaccinated, p.areaid, p.petPic,
+//               p.adoptionFee, p.contactNumber, p.approvedBy, 
+//               p.approvedOn, p.createdOn 
+//               FROM petlisting as p 
+//               WHERE p.isActive=1`, (err, result) => {
+//         if (err) return res.status(500).json(err)
+//         return res.json(result)
+//     })
+// }
 
 // GET pet by ID
 function getPetById(req, res) {
@@ -70,22 +81,46 @@ function insertPet(req, res) {
 function updatePet(req, res) {
     const { id } = req.params
     const { name, age, gender, healthDetails, vaccinated,
-        areaid, adoptionFee, contactNumber } = req.body
-    const petPic = req.file ? req.file.filename : req.body.old_picture
+        areaid, adoptionFee, contactNumber,
+        listedByType, listedById } = req.body  // ✅ add these
 
+    const petPic = req.file ? req.file.filename : req.body.old_picture
     const updatedOn = new Date()
 
     db.query(`UPDATE petlisting SET name=?, age=?, gender=?, 
               healthDetails=?, vaccinated=?, areaid=?, petPic=?, 
-              adoptionFee=?, contactNumber=?, updatedOn=? 
+              adoptionFee=?, contactNumber=?, 
+              listedByType=?, listedById=?,
+              updatedOn=? 
               WHERE petId=?`,
         [name, age, gender, healthDetails, vaccinated, areaid,
-            petPic, adoptionFee, contactNumber, updatedOn, id],
+            petPic, adoptionFee, contactNumber,
+            listedByType, listedById,   // ✅ add these
+            updatedOn, id],
         (err) => {
             if (err) return res.status(500).json(err)
             return res.json({ message: "Pet updated successfully" })
         })
 }
+// function updatePet(req, res) {
+//     const { id } = req.params
+//     const { name, age, gender, healthDetails, vaccinated,
+//         areaid, adoptionFee, contactNumber } = req.body
+//     const petPic = req.file ? req.file.filename : req.body.old_picture
+
+//     const updatedOn = new Date()
+
+//     db.query(`UPDATE petlisting SET name=?, age=?, gender=?, 
+//               healthDetails=?, vaccinated=?, areaid=?, petPic=?, 
+//               adoptionFee=?, contactNumber=?, updatedOn=? 
+//               WHERE petId=?`,
+//         [name, age, gender, healthDetails, vaccinated, areaid,
+//             petPic, adoptionFee, contactNumber, updatedOn, id],
+//         (err) => {
+//             if (err) return res.status(500).json(err)
+//             return res.json({ message: "Pet updated successfully" })
+//         })
+// }
 
 // DELETE - Soft delete
 function removePet(req, res) {

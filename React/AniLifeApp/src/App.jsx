@@ -14,10 +14,17 @@ import Area from './admin/Area'
 import Payment from './admin/Payment'
 import Donation from './admin/Donation'
 import Breed from './admin/breed'
-import AnimalInfo from './admin/animalinfo'  
+import AnimalInfo from './admin/animalinfo'
 import NgosInfo from './admin/Ngosinfo'
 import Vet from './admin/Vet'
 import UserProfile from './admin/UserProfile'
+import Volunteer from './admin/Volunteer'
+import RescueCase from './admin/RescueCase'
+import Petlisting from './admin/Petlisting'
+import Adoption from './admin/Adoption'
+
+import Register from './pages/Register'
+import Login from './pages/Login'
 
 
 function App() {
@@ -40,10 +47,17 @@ function App() {
         <Route path="/admin/donation" element={<Donation />} />
         <Route path="/admin/breed" element={<Breed />} />
         <Route path="/admin/animalinfo" element={<AnimalInfo />} />
-        <Route path="/admin/ngo" element={<NgosInfo />} /> 
-        <Route path="/admin/vet" element={<Vet />} />  
-        <Route path="/admin/users" element={<UserProfile />} />  
+        <Route path="/admin/ngo" element={<NgosInfo />} />
+        <Route path="/admin/vet" element={<Vet />} />
+        <Route path="/admin/users" element={<UserProfile />} />
+        <Route path="/admin/Volunteer" element={<Volunteer />} />
+        <Route path="/admin/rescue" element={<RescueCase />} />
+        <Route path="/admin/petlisting" element={<Petlisting />} />
+        <Route path="/admin/adoption" element={<Adoption />} />
 
+
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
         {/* User pages */}
         <Route path="/" element={<Home />} />

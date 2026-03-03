@@ -1,26 +1,25 @@
 
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-
 const navItems = [
-  { name: "Dashboard" },
-  { name: "Category" },
-  { name: "Breed" },
-  { name: "Petlisting" },
-  { name: "NGO" },
-  { name: "Vet" },
-  { name: "Volunteer" },
-  { name: "Users" },
-  { name: "Guide" },
-  { name: "Rescue Cases" },
-  { name: "Adoption" },
-   // ← ADD THESE!
-  { name: "Country" },
-  { name: "State" },
-  { name: "City" },
-  { name: "Area" },
-  { name: "Payment Method" },
-  { name: "Logout" },
+  { name: "Dashboard", path: "/dashboard" },
+  { name: "Category", path: "/admin/category" },
+  { name: "Breed", path: "/admin/breed" },
+  { name: "Petlisting", path: "/admin/petlisting" },
+  { name: "NGO", path: "/admin/ngo" },
+  { name: "Vet", path: "/admin/vet" },
+  { name: "Volunteer", path: "/admin/volunteer" },
+  { name: "Users", path: "/admin/users" },
+  { name: "Animal Guide", path: "/admin/animalinfo" },
+  { name: "Rescue Cases", path: "/admin/rescue" },
+  { name: "Adoption", path: "/admin/adoption" },
+  { name: "Country", path: "/admin/country" },
+  { name: "State", path: "/admin/state" },
+  { name: "City", path: "/admin/city" },
+  { name: "Area", path: "/admin/area" },
+  { name: "Payment Method", path: "/admin/payment" },
+  { name: "Donation", path: "/admin/donation" },
+  { name: "Logout", path: "/" },
 ]
 
 // const cardData = [
@@ -53,6 +52,7 @@ const cardData = [
   { title: "City", desc: "Manage cities", icon: "🏙️", path: "/admin/city" },
   { title: "Area", desc: "Manage areas", icon: "📍", path: "/admin/area" },
   { title: "Payment Method", desc: "Manage payment methods", icon: "💳", path: "/admin/payment" },
+  { title: "Donation ", desc: "Manage Donation ", icon: "💳", path: "/admin/donation" },
 ]
 
 export default function Dashboard() {
@@ -61,13 +61,13 @@ export default function Dashboard() {
   const [hoveredCard, setHoveredCard] = useState(null)
 
   const handleNavClick = (item) => {
-    if (item === "Logout") {
-      navigate("/")
+    if (item.name === "Logout") {
+        navigate("/")
     } else {
-      setActiveNav(item)
+        setActiveNav(item.name)
+        navigate(item.path)   // add this
     }
-  }
-
+}
   return (
     <div style={{ display: "flex", height: "100vh", fontFamily: "'Segoe UI', sans-serif" }}>
 
@@ -96,7 +96,7 @@ export default function Dashboard() {
         <ul style={{ listStyle: "none", padding: 0 }}>
           {navItems.map((item) => (
             <li key={item.name}
-              onClick={() => handleNavClick(item.name)}
+              onClick={() => handleNavClick(item)}
               style={{
                 padding: "12px 15px",
                 borderRadius: "10px",

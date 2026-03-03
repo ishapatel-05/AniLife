@@ -28,7 +28,7 @@ const petRoutes = require("./routes/petlisting.routes")
 const adoptionRoutes = require("./routes/adoptionrequest.routes")
 const rescueRoutes = require("./routes/rescuecase.routes")
 
-
+const donationRouter = require("./routes/donation.routes")
 
 
 //main code
@@ -62,7 +62,9 @@ app.use('/api/category', categoryRoutes)
 app.use('/api/petlisting', petRoutes)
 
 app.use('/api/adoption', adoptionRoutes)
-app.use('/api/rescue', rescueRoutes)
+app.use('/api/rescuecase', rescueRoutes)
+app.use('/api/donation', donationRouter)
+
 
 
 

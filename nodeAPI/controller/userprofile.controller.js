@@ -2,13 +2,38 @@ const db = require("../config/db")
 const upload = require("../config/multerConfig")
 
 // GET all active profiles
+
 function getAllProfiles(req, res) {
-    db.query(`SELECT * FROM userprofile WHERE isActive=1`,
-        (err, result) => {
-            if (err) return res.status(500).json(err)
-            return res.json(result)
-        })
+    const query = `
+    SELECT 
+      up.upid,
+      up.uid,
+      u.fname,
+      u.lname,
+      up.address,
+      up.areaid,
+      a.areaname,
+      up.picture
+    FROM userprofile up
+    INNER JOIN mstuser u ON up.uid = u.uid
+    INNER JOIN area a ON up.areaid = a.areaid
+    WHERE up.isActive = 1
+  `;
+
+    db.query(query, (err, result) => {
+        if (err) return res.status(500).json(err);
+        return res.json(result);
+    });
 }
+
+// module.exports = { getAllProfiles /*, other functions */ };
+// function getAllProfiles(req, res) {
+//     db.query(`SELECT * FROM userprofile WHERE isActive=1`,
+//         (err, result) => {
+//             if (err) return res.status(500).json(err)
+//             return res.json(result)
+//         })
+// }
 
 // GET profile by ID
 function getProfileById(req, res) {
@@ -36,7 +61,7 @@ function getProfileByUser(req, res) {
 
 // POST - Insert profile with picture
 function insertProfile(req, res) {
-    const { uid, address, areaid, createdby } = req.body
+    const { uid, address, areaid } = req.body
     const picture = req.file ? req.file.filename : null
 
     if (!uid || !address || !areaid) {
@@ -44,13 +69,17 @@ function insertProfile(req, res) {
     }
 
     const createdon = new Date()
+    const createdby = 1 // temporary fix
+
 
     db.query(`INSERT INTO userprofile 
         (uid, picture, address, areaid, createdby, createdon, isActive) 
         VALUES (?,?,?,?,?,?,1)`,
         [uid, picture, address, areaid, createdby, createdon],
         (err) => {
+
             if (err) return res.status(500).json(err)
+            console.log("DB ERROR:", err)  // add this to see exact error
             return res.json({ message: "Profile created successfully" })
         })
 }
