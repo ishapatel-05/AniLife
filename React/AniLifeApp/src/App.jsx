@@ -16,6 +16,8 @@ import Donation from './admin/Donation'
 import Breed from './admin/breed'
 import AnimalInfo from './admin/animalinfo'  
 import NgosInfo from './admin/Ngosinfo'
+import Vet from './admin/Vet'
+import UserProfile from './admin/UserProfile'
 
 
 function App() {
@@ -38,7 +40,9 @@ function App() {
         <Route path="/admin/donation" element={<Donation />} />
         <Route path="/admin/breed" element={<Breed />} />
         <Route path="/admin/animalinfo" element={<AnimalInfo />} />
-        <Route path="/admin/ngo" element={<NgosInfo />} />   {/* ✅ add this */}
+        <Route path="/admin/ngo" element={<NgosInfo />} /> 
+        <Route path="/admin/vet" element={<Vet />} />  
+        <Route path="/admin/users" element={<UserProfile />} />  
 
 
         {/* User pages */}

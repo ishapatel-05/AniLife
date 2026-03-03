@@ -7,7 +7,7 @@ const CITY_API = "http://localhost:5000/api/city"
 export default function Area() {
     const [areaname, setAreaname] = useState("")
     const [pincode, setPincode] = useState("")
-    const [cityid, setCityid] = useState("")
+    const [cityid, setCityid] = useState(0)
     const [id, setId] = useState(0)
     const [areas, setAreas] = useState([])
     const [cities, setCities] = useState([])
@@ -25,14 +25,14 @@ export default function Area() {
     const saveArea = async () => {
         if (!areaname || !cityid || !pincode) return alert("Fill all fields!")
         if (id > 0) {
-            await axios.put(`${API}/${id}`, { areaname, pincode })
+            await axios.put(`${API}/${id}`, { areaname, pincode,cityid })
             setId(0)
         } else {
             await axios.post(API, { areaname, cityid, pincode })
         }
         setAreaname("")
         setPincode("")
-        setCityid("")
+        setCityid(0)
         getAreas()
     }
 
@@ -55,7 +55,7 @@ export default function Area() {
         setId(0)
         setAreaname("")
         setPincode("")
-        setCityid("")
+        setCityid(0)
     }
 
     useEffect(() => {
@@ -94,7 +94,8 @@ export default function Area() {
                         <select
                             className="form-control"
                             value={cityid}
-                            onChange={(e) => setCityid(e.target.value)}
+                            onChange={(e) => setCityid(Number(e.target.value))}
+                            // onChange={(e) => setCityid(e.target.value)}
                         >
                             <option value="">-- Select City --</option>
                             {cities.map((c) => (

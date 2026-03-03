@@ -36,7 +36,17 @@ export default function NgosInfo() {
         if (!ngoname || !contact || !email || !address || !areaid || !services)
             return alert("Please fill all fields")
 
-        const payload = { ngoname, contact, email, address, areaid, services }
+        // const payload = { ngoname, contact, email, address, areaid, services }
+        const payload = {
+            ngoname,
+            contact,
+            email,
+            address,
+            areaid,
+            services,
+            createdby: 1,
+            updatedby: 1
+        }
 
         if (id > 0) {
             await axios.put(`${API}/${id}`, payload)

@@ -14,18 +14,19 @@ const db = require("../config/db")
 
 
 
+// function getAllNgos(req, res) {
 function getAllNgos(req, res) {
     db.query(`SELECT n.ngoid, n.ngoname, n.contact, n.email, 
               n.address, n.areaid, a.areaname, n.services, 
               n.isActive 
               FROM ngosinfo as n 
-              INNER JOIN area as a ON n.areaid = a.areaid
-              WHERE n.isActive = 1`, (err, result) => {
-        if (err) return res.status(500).json(err)
-        return res.json(result)
-    })
+              LEFT JOIN area as a ON n.areaid = a.areaid
+              WHERE n.isActive = 1`,
+        (err, result) => {
+            if (err) return res.status(500).json(err)
+            return res.json(result)
+        })
 }
-
 // GET NGO by ID
 function getNgoById(req, res) {
     const { id } = req.params
@@ -65,10 +66,10 @@ function updateNgo(req, res) {
 
     const updatedon = new Date().toISOString().split('T')[0]
 
-    db.query(`UPDATE ngosinfo SET ngoname=?, contact=?, email=?, 
-              address=?, areaid=?, services=?, updatedby=?, updatedon=? 
-              WHERE ngoid=?`,
-        [ngoname, contact, email, address, areaid, services, updatedby, updatedon, id],
+   db.query(`UPDATE ngosinfo SET ngoname=?, contact=?, email=?, 
+          address=?, areaid=?, services=?, updatedby=1, updatedon=? 
+          WHERE ngoid=?`,
+    [ngoname, contact, email, address, areaid, services, updatedon, id],
         (err) => {
             if (err) return res.status(500).json(err)
             return res.json({ message: "NGO updated successfully" })

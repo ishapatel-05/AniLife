@@ -3,17 +3,31 @@ const db=require("../config/db")
 // GET all active breeds with category name (INNER JOIN)
 function getAllBreeds(req,res)
 {
-    db.query(`select cat.catname, b.breedname, b.breedid from 
-        animalcategory as cat inner join breed as b on 
-        cat.catid = b.catid 
+    db.query(`
+        select b.breedid, b.breedname, b.catid, cat.catname 
+        from animalcategory as cat 
+        inner join breed as b on cat.catid = b.catid 
         where b.isActive = 1
-        `,(err,result)=>
+    `,(err,result)=>
     {
         if(err)
             return res.status(500).json(err)
         return res.json(result)
     })
 }
+// function getAllBreeds(req,res)
+// {
+//     db.query(`select cat.catname, b.breedname, b.breedid from 
+//         animalcategory as cat inner join breed as b on 
+//         cat.catid = b.catid 
+//         where b.isActive = 1
+//         `,(err,result)=>
+//     {
+//         if(err)
+//             return res.status(500).json(err)
+//         return res.json(result)
+//     })
+// }
 
 // GET breed by ID with category name
 function getBreedById(req,res)
@@ -54,19 +68,39 @@ function insertBreed(req,res)
 function updateBreed(req,res)
 {
     const {id}=req.params
-    const {breedname}=req.body
+    const {breedname, catid}=req.body
     
-    if(!breedname) {
-        return res.status(400).json({error: "Breed name is required"})
+    if(!breedname || !catid) {
+        return res.status(400).json({error: "Breed name and category ID are required"})
     }
     
-    db.query("update breed set breedname=? where breedid=?",[breedname,id],(err)=>
-    {
-        if(err)
-            return res.status(500).json(err)
-        return res.json({message:"Record updated successfully"})
-    })
+    db.query(
+        "update breed set breedname=?, catid=? where breedid=?",
+        [breedname, catid, id],
+        (err)=>
+        {
+            if(err)
+                return res.status(500).json(err)
+            return res.json({message:"Record updated successfully"})
+        }
+    )
 }
+// function updateBreed(req,res)
+// {
+//     const {id}=req.params
+//     const {breedname}=req.body
+    
+//     if(!breedname) {
+//         return res.status(400).json({error: "Breed name is required"})
+//     }
+    
+//     db.query("update breed set breedname=? where breedid=?",[breedname,id],(err)=>
+//     {
+//         if(err)
+//             return res.status(500).json(err)
+//         return res.json({message:"Record updated successfully"})
+//     })
+// }
 
 // DELETE - Soft delete (set isActive=0)
 function removeBreed(req,res)

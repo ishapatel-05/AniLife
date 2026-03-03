@@ -40,17 +40,34 @@ function addCity(req,res)
     })
 }
 
+// function updateCity(req,res)
 function updateCity(req,res)
 {
-    const {id}=req.params
-    const {cityname}=req.body
-    db.query("Update city set cityname=? where cityid=?",[cityname,id],(err,result)=>
-    {
-        if(err)
-            return res.status(500).json(err)
-        return res.json({message:"Record updated successfully"})
-    })
+    const {id} = req.params
+    const {cityname, stateid} = req.body
+
+    db.query(
+        "UPDATE city SET cityname=?, stateid=? WHERE cityid=?",
+        [cityname, stateid, id],
+        (err,result)=>
+        {
+            if(err)
+                return res.status(500).json(err)
+
+            return res.json({message:"Record updated successfully"})
+        }
+    )
 }
+// {
+//     const {id}=req.params
+//     const {cityname}=req.body
+//     db.query("Update city set cityname=? where cityid=?",[cityname,id],(err,result)=>
+//     {
+//         if(err)
+//             return res.status(500).json(err)
+//         return res.json({message:"Record updated successfully"})
+//     })
+// }
 
 function removeCity(req,res)
 {

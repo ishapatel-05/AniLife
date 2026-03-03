@@ -25,7 +25,7 @@ export default function AdminLogin() {
             <div className="row justify-content-center">
                 <div className="col-md-4">
                     <div className="card p-4 shadow">
-                        <h3 className="text-center mb-4">AniLife Admin Login</h3>
+                        <h3 className="text-center mb-4" style={{ color: '#C2185B', background: 'white' }}>AniLife Admin Login</h3>
                         <div className="mb-3">
                             <input
                                 type="email"
@@ -45,7 +45,8 @@ export default function AdminLogin() {
                             />
                         </div>
                         <button
-                            className="btn btn-success w-100"
+                            // className=" w-100"
+                            style={{ background: "#c2185ceb", color: 'white', borderRadius:'20px', height:'50px', fontStyle:'bold', border:'none'}}
                             onClick={handleLogin}
                         >
                             Login

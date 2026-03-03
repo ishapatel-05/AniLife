@@ -25,7 +25,8 @@ export default function Breed() {
         if (!breedname) return alert("Enter Breed Name")
         if (!catid) return alert("Select Category")
         if (id > 0) {
-            await axios.put(`${API}/${id}`, { breedname })
+            // await axios.put(`${API}/${id}`, { breedname })
+            await axios.put(`${API}/${id}`, { breedname, catid })
             setId(0)
         } else {
             await axios.post(API, { breedname, catid })
@@ -35,11 +36,17 @@ export default function Breed() {
         getBreeds()
     }
 
+    // const editBreed = (b) => {
+    //     setBreedname(b.breedname)
+    //     setCatid("")        // catid not returned in GET, only catname
+    //     setId(b.breedid)
+    // }
+
     const editBreed = (b) => {
-        setBreedname(b.breedname)
-        setCatid("")        // catid not returned in GET, only catname
-        setId(b.breedid)
-    }
+    setBreedname(b.breedname)
+    setCatid(b.catid)     // ✅ set actual category id
+    setId(b.breedid)
+}
 
     const deleteBreed = async (breedid) => {
         const ok = confirm("Are you sure?")

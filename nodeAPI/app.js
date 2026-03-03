@@ -36,6 +36,8 @@ const rescueRoutes = require("./routes/rescuecase.routes")
 const app = express()
 app.use(cors())
 app.use(bodyparser.json())
+
+
 app.use('/api/country', cnRoutes)
 app.use('/api/state', stRoutes)
 app.use('/api/city',cityRoutes)

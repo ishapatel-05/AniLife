@@ -36,11 +36,15 @@ export default function AnimalInfo() {
         if (!breedid || !title || !nutrition || !diseases || !vaccines || !firstaid)
             return alert("Please fill all fields")
 
-        const payload = { breedid, title, nutrition, diseases, vaccines, firstaid }
-
+        const payload = {
+            breedid, title, nutrition, diseases, vaccines, firstaid,
+            createdby: 1
+        }
         if (id > 0) {
-            await axios.put(`${API}/${id}`, payload)
-            setId(0)
+            await axios.put(`${API}/${id}`, {
+                ...payload,
+                updatedby: 1
+            })
         } else {
             await axios.post(API, payload)
         }
@@ -50,6 +54,7 @@ export default function AnimalInfo() {
 
     const editInfo = (item) => {
         setBreedid(item.breedid)
+        // setBreedid(item.breedid)
         setTitle(item.title)
         setNutrition(item.nutrition)
         setDiseases(item.diseases)

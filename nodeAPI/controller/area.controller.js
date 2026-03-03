@@ -46,15 +46,31 @@ function addArea(req,res)
 // Update area name and pincode by area ID
 function updateArea(req,res)
 {
-    const {id}=req.params
-    const {areaname,pincode}=req.body
-    db.query("Update area set areaname=?, pincode=? where areaid=?",[areaname,pincode,id],(err,result)=>
-    {
-        if(err)
-            return res.status(500).json(err)
-        return res.json({message:"Record updated successfully"})
-    })
+    const {id} = req.params
+    const {areaname, pincode, cityid} = req.body
+
+    db.query(
+        "UPDATE area SET areaname=?, pincode=?, cityid=? WHERE areaid=?",
+        [areaname, pincode, cityid, id],
+        (err,result)=>{
+            if(err)
+                return res.status(500).json(err)
+
+            return res.json({message:"Record updated successfully"})
+        }
+    )
 }
+// function updateArea(req,res)
+// {
+//     const {id}=req.params
+//     const {areaname,pincode}=req.body
+//     db.query("Update area set areaname=?, pincode=? where areaid=?",[areaname,pincode,id],(err,result)=>
+//     {
+//         if(err)
+//             return res.status(500).json(err)
+//         return res.json({message:"Record updated successfully"})
+//     })
+// }
 
 // Delete area by ID
 function removeArea(req,res)

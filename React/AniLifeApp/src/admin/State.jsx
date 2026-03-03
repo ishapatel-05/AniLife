@@ -38,12 +38,12 @@ export default function State() {
     }
 
     // EDIT - fill inputs
+
     const editState = (s) => {
         setSname(s.statename)
-        setCountryid(s.countryid)
+        setCountryid(Number(s.countryid))
         setId(s.stateid)
     }
-
     // DELETE
     const deleteState = async (stateid) => {
         const ok = confirm("Are you sure?")
@@ -80,6 +80,7 @@ export default function State() {
                             className="form-control"
                             placeholder="State Name"
                             value={sname}
+
                             onChange={(e) => setSname(e.target.value)}
                         />
                     </div>
@@ -87,7 +88,8 @@ export default function State() {
                         <select
                             className="form-control"
                             value={countryid}
-                            onChange={(e) => setCountryid(e.target.value)}
+                            // onChange={(e) => setCountryid(e.target.value)}
+                            onChange={(e) => setCountryid(Number(e.target.value))}
                         >
                             <option value="">-- Select Country --</option>
                             {countries.map((c) => (

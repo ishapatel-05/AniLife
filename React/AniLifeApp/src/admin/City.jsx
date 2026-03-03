@@ -6,7 +6,8 @@ const STATE_API = "http://localhost:5000/api/state"
 
 export default function City() {
     const [cityname, setCityname] = useState("")
-    const [stateid, setStateid] = useState("")
+    // const [stateid, setStateid] = useState("")
+    const [stateid, setStateid] = useState(0)
     const [id, setId] = useState(0)
     const [cities, setCities] = useState([])
     const [states, setStates] = useState([])
@@ -27,15 +28,17 @@ export default function City() {
     const saveCity = async () => {
         if (!cityname || !stateid) return alert("Fill all fields!")
         if (id > 0) {
-            await axios.put(`${API}/${id}`, { cityname })
+            await axios.put(`${API}/${id}`, { cityname,stateid })
             setId(0)
         } else {
             await axios.post(API, { cityname, stateid })
         }
         setCityname("")
-        setStateid("")
+        // setStateid("")
+        setStateid(0)
         getCities()
     }
+  
 
     // EDIT
     const editCity = (c) => {
@@ -87,7 +90,8 @@ export default function City() {
                         <select
                             className="form-control"
                             value={stateid}
-                            onChange={(e) => setStateid(e.target.value)}
+                            onChange={(e) => setStateid(Number(e.target.value))}
+                            // onChange={(e) => setStateid(e.target.value)}
                         >
                             <option value="">-- Select State --</option>
                             {states.map((s) => (

@@ -40,18 +40,31 @@ function addState(req,res)
     })
 }
 
-function upstate(req,res)
-{
-    const {id}=req.params
-    const {statename}=req.body
-    db.query("Update state set statename=? where stateid=?",[statename,id],(err,result)=>
-    {
-        if(err)
-            return res.status(500).json(err)
-        return res.json({message:"Record updated successfully"})
-    })
-}
+// function upstate(req,res)
+// {
+//     const {id}=req.params
+//     const {statename}=req.body
+//     db.query("Update state set statename=? where stateid=?",[statename,id],(err,result)=>
+//     {
+//         if(err)
+//             return res.status(500).json(err)
+//         return res.json({message:"Record updated successfully"})
+//     })
+// }
 
+function upstate(req, res) {
+    const { id } = req.params
+    const { statename, countryid } = req.body
+
+    db.query(
+        "UPDATE state SET statename=?, countryid=? WHERE stateid=?",
+        [statename, countryid, id],
+        (err) => {
+            if (err) return res.status(500).json(err)
+            return res.json({ message: "State updated successfully" })
+        }
+    )
+}
 function removestate(req,res)
 {
     const {id}=req.params
