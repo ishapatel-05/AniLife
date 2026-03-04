@@ -65,7 +65,7 @@ export default function Navbar() {
 
             {/* Right Buttons */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Link to="/emergency">
+                <Link to="/rescue">
                     <button style={{
                         background: '#ff1744',
                         color: 'white',

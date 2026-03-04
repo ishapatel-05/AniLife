@@ -88,11 +88,22 @@ export default function Rescue() {
             }}>
                 <h1 style={{ fontWeight: "bold" }}> Animal Rescue Services</h1>
                 <h5>24/7 Emergency Response for Animals in Need</h5>
-                <button className="btn btn-light mt-3"
-                    style={{ borderRadius: "25px", color: "#C2185B", fontWeight: "bold" }}
-                    onClick={handleReportClick}>
-                    Report Injured Animal
-                </button>
+                <div>
+                    <div className="mt-3 d-flex justify-content-center gap-3 flex-wrap">
+                        <button className="btn btn-light"
+                            style={{ borderRadius: "25px", color: "#C2185B", fontWeight: "bold" }}
+                            onClick={handleReportClick}>
+                            Report Injured Animal
+                        </button>
+                        <a href="tel:+919315982650">
+                            <button className="btn btn-light px-4"
+                                style={{ borderRadius: "25px", color: "#C2185B", fontWeight: "bold" }}>
+                                Call: +91 9315982650
+                            </button>
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
             {/* How to Report Steps */}
@@ -136,7 +147,7 @@ export default function Rescue() {
                                     <div className="d-flex justify-content-between align-items-center mb-2">
                                         <h5 style={{ color: "#C2185B" }}>{c.animalType}</h5>
                                         <span className={`badge ${c.status === "Rescued" ? "bg-success" :
-                                                c.status === "Assigned" ? "bg-warning" : "bg-danger"
+                                            c.status === "Assigned" ? "bg-warning" : "bg-danger"
                                             }`}>{c.status}</span>
                                     </div>
                                     <p className="text-muted" style={{ fontSize: "13px" }}>
@@ -154,6 +165,35 @@ export default function Rescue() {
                 </div>
             </div>
 
+            {/* Steps */}
+            <div style={{
+                background: "#fce4e4",
+                margin: "50px",
+                padding: "20px",
+                borderRadius: "10px"
+            }}>
+                <div className="text-center " style={{ color: '#C2185B' }}>
+                    <h1>What To Do If You See An Injured Animal</h1>
+                    <h3>Follow these steps while our team is on the way</h3>
+                </div>
+
+                {[
+                    { num: "1", title: "Stay Calm", desc: "Approach the animal slowly and calmly. Avoid sudden movements that might frighten them." },
+                    { num: "2", title: "Assess the Situation", desc: "Check if the animal is conscious, breathing, and the severity of injuries from a safe distance." },
+                    { num: "3", title: "Secure the Area", desc: "If on a road, try to slow down traffic. Use hazard markers if available." },
+                    { num: "4", title: "Contact Us Immediately", desc: "Call our emergency helpline or send a WhatsApp message with location and photos." },
+                    { num: "5", title: "Stay With the Animal", desc: "Keep the animal calm and stay nearby until our rescue team arrives." },
+                ].map((step, i) => (
+                    <div className="card mx-5 my-4"
+                        style={{ color: '#C2185B' }}
+                        key={i}>
+                        <div className="card-body">
+                            <h3 className="text-center">Step {step.num}: {step.title}</h3>
+                            <h6 className="text-center text-muted">{step.desc}</h6>
+                        </div>
+                    </div>
+                ))}
+            </div>
 
 
             {/* First Aid DO & DON'T */}
@@ -215,6 +255,25 @@ export default function Rescue() {
                 </div>
             </div>
 
+            {/* Need Help Box */}
+            <div className="container mb-5">
+                <div className="card shadow text-center p-4"
+                    style={{ background: "#fff5f7", borderRadius: "15px" }}>
+                    <h2 style={{ color: "#C2185B" }}>Nearby Vet  </h2>
+                    <p className="text-muted">Find Veternity Clinic  Nearby to help Animal</p>
+                    {/* <h4 style={{ color: "#C2185B" }}>Call: +91 9315982650</h4> */}
+                    <div className="d-flex justify-content-center gap-3 mt-2">
+                        <button className="btn px-4"
+                            style={{
+                                background: "linear-gradient(135deg, #E91E8C, #C2185B)",
+                                color: "white", borderRadius: "25px", border: "none", fontWeight: "bold"
+                            }}
+                            onClick={() => navigate("/vet")}>
+                            Contact Nearby Vet
+                        </button>
+                    </div>
+                </div>
+            </div>
 
 
             {/* Join Volunteer */}
@@ -223,15 +282,18 @@ export default function Rescue() {
                     style={{ background: "#fff5f7", borderRadius: "15px" }}>
                     <h2 style={{ color: "#C2185B" }}>Join Our Rescue Team</h2>
                     <p className="text-muted">We're always looking for compassionate volunteers</p>
-                    <button className="btn px-5 py-2"
-                        style={{
-                            background: "linear-gradient(135deg, #E91E8C, #C2185B)",
-                            color: "white", borderRadius: "25px", border: "none",
-                            fontWeight: "bold"
-                        }}
-                        onClick={() => navigate("/volunteer")}>
-                        Become a Volunteer
-                    </button>
+                    <div className="d-flex justify-content-center gap-3 mt-2">
+
+                        <button className="btn px-5 py-2"
+                            style={{
+                                background: "linear-gradient(135deg, #E91E8C, #C2185B)",
+                                color: "white", borderRadius: "25px", border: "none",
+                                fontWeight: "bold"
+                            }}
+                            onClick={() => navigate("/volunteer")}>
+                            Become a Volunteer
+                        </button>
+                    </div>
                 </div>
             </div>
 

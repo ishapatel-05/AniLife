@@ -32,7 +32,7 @@ import Volunteer from './pages/Volunteer'
 import Guide from './pages/Guide'
 import About from './pages/About'
 import Contact from './pages/Contact'
-import Emergency from './pages/Emergency'
+// import Emergency from './pages/Emergency'
 
 
 function App() {
@@ -77,7 +77,7 @@ function App() {
         <Route path="/about" element={<About />} />
 
         <Route path="/contact" element={<Contact />} />
-        <Route path="/emergency" element={<Emergency />} />
+        {/* <Route path="/emergency" element={<Emergency />} /> */}
 
       </Routes>
     </BrowserRouter>

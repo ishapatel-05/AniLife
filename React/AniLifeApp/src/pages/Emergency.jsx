@@ -56,7 +56,7 @@ export default function Emergency() {
             </div>
 
             {/* Call & WhatsApp Cards */}
-            <div className="container-fluid my-4 py-4">
+            {/* <div className="container-fluid my-4 py-4">
                 <div className="row">
                     <div className="col-md-6 mb-4">
                         <div className="card shadow text-center">
@@ -90,7 +90,7 @@ export default function Emergency() {
                 <p className="text-center text-muted">
                     Send us your location and photos of the animal for faster assistance
                 </p>
-            </div>
+            </div> */}
 
             {/* Steps */}
             <div style={{
@@ -202,7 +202,7 @@ export default function Emergency() {
                                 Call +91 9315982650
                             </button>
                         </a>
-                        <a href="https://wa.me/919315982650">
+                        {/* <a href="https://wa.me/919315982650">
                             <button className="btn px-4"
                                 style={{
                                     background: "#25D366", color: "white",
@@ -210,7 +210,7 @@ export default function Emergency() {
                                 }}>
                                 WhatsApp Us
                             </button>
-                        </a>
+                        </a> */}
                         <Link to="/rescue">
                             <button className="btn px-4"
                                 style={{
