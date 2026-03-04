@@ -50,7 +50,11 @@ function getProfileById(req, res) {
 // GET profile by USER ID
 function getProfileByUser(req, res) {
     const { uid } = req.params
-    db.query(`SELECT * FROM userprofile WHERE uid=? AND isActive=1`,
+    db.query(`SELECT up.*, u.fname, u.lname, a.areaname 
+              FROM userprofile up
+              INNER JOIN mstuser u ON up.uid = u.uid
+              LEFT JOIN area a ON up.areaid = a.areaid
+              WHERE up.uid=? AND up.isActive=1`,
         [uid], (err, result) => {
             if (err) return res.status(500).json(err)
             if (result.length == 0)
@@ -58,7 +62,6 @@ function getProfileByUser(req, res) {
             return res.json(result[0])
         })
 }
-
 // POST - Insert profile with picture
 function insertProfile(req, res) {
     const { uid, address, areaid } = req.body

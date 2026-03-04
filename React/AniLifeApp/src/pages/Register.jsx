@@ -16,11 +16,23 @@ export default function Register() {
         if (!fname || !lname || !email || !contact || !password)
             return alert("Please fill all fields")
 
-        const res = await axios.post(API, { fname, lname, email, contact, password })
-        alert(res.data.message)
-        navigate("/login")
-    }
+        try {
+            // Step 1 - Register user
+            const res = await axios.post(API, { fname, lname, email, contact, password })
 
+            // Step 2 - Auto create empty profile using returned uid
+            await axios.post("http://localhost:5000/api/userprofile", {
+                uid: res.data.uid,  // ← uid from backend
+                address: "",
+                areaid: 1
+            })
+
+            alert(res.data.message)
+            navigate("/login")
+        } catch (err) {
+            alert(err.response?.data?.error || "Something went wrong!")
+        }
+    }
     return (
         <div style={{
             minHeight: "100vh",

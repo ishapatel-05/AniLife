@@ -30,9 +30,12 @@ function insertUser(req, res) {
     }
 
     db.query("INSERT INTO mstuser (fname, lname, email, contact, password, isActive) VALUES (?,?,?,?,?,1)",
-        [fname, lname, email, contact, password], (err) => {
+        [fname, lname, email, contact, password], (err, result) => {
             if (err) return res.status(500).json(err)
-            return res.json({ message: "User registered successfully" })
+            return res.json({ 
+                message: "User registered successfully",
+                uid: result.insertId  //  added this
+            })
         })
 }
 

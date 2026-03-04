@@ -16,7 +16,7 @@ import Breed from './admin/breed'
 import AnimalInfo from './admin/animalinfo'
 import NgosInfo from './admin/Ngosinfo'
 import AdminVet from './admin/Vet'
-import UserProfile from './admin/UserProfile'
+import AdminUserProfile from './admin/UserProfile'
 import AdminVolunteer from './admin/Volunteer'
 import RescueCase from './admin/RescueCase'
 import Petlisting from './admin/Petlisting'
@@ -33,6 +33,7 @@ import Guide from './pages/Guide'
 import About from './pages/About'
 import Contact from './pages/Contact'
 // import Emergency from './pages/Emergency'
+import UserProfile from './pages/UserProfile'
 
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
         <Route path="/admin/animalinfo" element={<AnimalInfo />} />
         <Route path="/admin/ngo" element={<NgosInfo />} />
         <Route path="/admin/vet" element={<AdminVet />} />
-        <Route path="/admin/users" element={<UserProfile />} />
+        <Route path="/admin/users" element={<AdminUserProfile />} />
         <Route path="/admin/Volunteer" element={<AdminVolunteer />} />
         <Route path="/admin/rescue" element={<RescueCase />} />
         <Route path="/admin/petlisting" element={<Petlisting />} />
@@ -78,6 +79,7 @@ function App() {
 
         <Route path="/contact" element={<Contact />} />
         {/* <Route path="/emergency" element={<Emergency />} /> */}
+        <Route path="/profile" element={<UserProfile />} />
 
       </Routes>
     </BrowserRouter>
