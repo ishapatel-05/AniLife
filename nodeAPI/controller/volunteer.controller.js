@@ -2,15 +2,27 @@ const db = require("../config/db")
 
 // GET all active volunteers
 function getAllVolunteers(req, res) {
-    db.query(`SELECT v.volunteerId, v.uid, v.areaid, v.skills, 
-              v.availability, v.experienceYears, v.contactNumber, 
-              v.verifiedBy, v.verifiedOn, v.status, v.createdOn 
-              FROM volunteer as v 
+    db.query(`SELECT v.*, 
+              CONCAT(u.fname,' ',u.lname) as username,
+              a.areaname
+              FROM volunteer v
+              LEFT JOIN mstuser u ON v.uid = u.uid
+              LEFT JOIN area a ON v.areaid = a.areaid
               WHERE v.isActive = 1`, (err, result) => {
         if (err) return res.status(500).json(err)
         return res.json(result)
     })
 }
+// function getAllVolunteers(req, res) {
+//     db.query(`SELECT v.volunteerId, v.uid, v.areaid, v.skills, 
+//               v.availability, v.experienceYears, v.contactNumber, 
+//               v.verifiedBy, v.verifiedOn, v.status, v.createdOn 
+//               FROM volunteer as v 
+//               WHERE v.isActive = 1`, (err, result) => {
+//         if (err) return res.status(500).json(err)
+//         return res.json(result)
+//     })
+// }
 
 // GET volunteer by ID
 function getVolunteerById(req, res) {

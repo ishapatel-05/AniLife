@@ -17,7 +17,7 @@ import AnimalInfo from './admin/animalinfo'
 import NgosInfo from './admin/Ngosinfo'
 import AdminVet from './admin/Vet'
 import UserProfile from './admin/UserProfile'
-import Volunteer from './admin/Volunteer'
+import AdminVolunteer from './admin/Volunteer'
 import RescueCase from './admin/RescueCase'
 import Petlisting from './admin/Petlisting'
 import Adoption from './admin/Adoption'
@@ -28,6 +28,11 @@ import Adopt from './pages/Adopt'
 import Rescue from './pages/Rescue'
 import Ngo from './pages/Ngo'
 import Vet from './pages/Vet'
+import Volunteer from './pages/Volunteer'
+import Guide from './pages/Guide'
+import About from './pages/About'
+import Contact from './pages/Contact'
+import Emergency from './pages/Emergency'
 
 
 function App() {
@@ -35,9 +40,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         {/* Admin */}
-        {/* <Route path="/" element={<AdminLogin />} /> */}
         <Route path="/adminlogin" element={<AdminLogin />} />
-        {/* <Route path="/adminlogin" element={<AdminLogin />} /> */}
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin/category" element={<Category />} />
 
@@ -46,14 +49,13 @@ function App() {
         <Route path="/admin/city" element={<City />} />
         <Route path="/admin/area" element={<Area />} />
         <Route path="/admin/payment" element={<Payment />} />
-        {/* <Route path="/admin/Donation" element={<Donation />} /> */}
         <Route path="/admin/donation" element={<Donation />} />
         <Route path="/admin/breed" element={<Breed />} />
         <Route path="/admin/animalinfo" element={<AnimalInfo />} />
         <Route path="/admin/ngo" element={<NgosInfo />} />
         <Route path="/admin/vet" element={<AdminVet />} />
         <Route path="/admin/users" element={<UserProfile />} />
-        <Route path="/admin/Volunteer" element={<Volunteer />} />
+        <Route path="/admin/Volunteer" element={<AdminVolunteer />} />
         <Route path="/admin/rescue" element={<RescueCase />} />
         <Route path="/admin/petlisting" element={<Petlisting />} />
         <Route path="/admin/adoption" element={<Adoption />} />
@@ -64,12 +66,19 @@ function App() {
         {/* User pages */}
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} /> 
+        <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
         <Route path="/adopt" element={<Adopt />} />
         <Route path="/rescue" element={<Rescue />} />
         <Route path="/ngo" element={<Ngo />} />
         <Route path="/vet" element={<Vet />} />
+        <Route path="/volunteer" element={<Volunteer />} />
+        <Route path="/guide" element={<Guide />} />
+        <Route path="/about" element={<About />} />
+
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/emergency" element={<Emergency />} />
+
       </Routes>
     </BrowserRouter>
   )
